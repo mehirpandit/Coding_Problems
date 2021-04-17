@@ -1,0 +1,65 @@
+import java.util.*;
+import java.util.Scanner;
+class Parser extends Solution{
+    // boolean isBalanced(String s){
+        
+    //     boolean isBal = false;
+        
+    //     while(s.length() != (s = s.replaceAll("\\(\\)|\\[\\]|\\{\\}", "")).length());
+        
+        
+    //     if(s.isEmpty()){
+    //         isBal = true;
+    //     }else{
+    //         isBal = false;
+    //     }
+        
+    //     return isBal;
+    // }
+    
+    
+    
+  
+        
+      boolean isBalanced(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(c =='[' || c == '(' || c == '{') {
+                stack.push(c);
+            }else if(c == ']') {
+                if(stack.isEmpty() || stack.pop() != '[') {
+                    return false;
+                }
+            }else if(c == ')') {
+                if(stack.isEmpty() || stack.pop() != '(') {
+                    return false;
+                }
+            }else if(c == '}') {
+                if(stack.isEmpty() || stack.pop() != '{') {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+    
+}
+
+
+// Write your code here. DO NOT use an access modifier in your class declaration.
+
+class Solution {
+	
+	public static void main(String[] args) {
+		Parser parser = new Parser();
+        
+		Scanner in = new Scanner(System.in);
+
+		while (in.hasNext()) {
+			System.out.println(parser.isBalanced(in.next()));
+		}
+        
+		in.close();
+	}
+}
