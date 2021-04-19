@@ -3,7 +3,7 @@
 public int findNumbers(int[] nums) {
 	int sol = 0;                            
 	for(int n : nums)                       
-		if(getNumberOfDigits(n) % 2 == 0)  
+		if(getDigits(n) % 2 == 0)  
 			sol++;                          
 	return sol;                             
 }
